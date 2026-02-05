@@ -12,7 +12,7 @@ export default function Home() {
         </li>
         <li>
           <Link href="/week-3" className="text-blue-500 hover:underline">
-            week 3
+            Week 3
           </Link>
         </li>
         <li>
