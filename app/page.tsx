@@ -15,6 +15,11 @@ export default function Home() {
             week 3
           </Link>
         </li>
+        <li>
+          <Link href="/week-4" className="text-blue-500 hover:underline">
+            Week 4
+          </Link>
+        </li>
       </ul>
     </main>
   );
