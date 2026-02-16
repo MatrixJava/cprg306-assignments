@@ -30,20 +30,22 @@ export default function Home() {
           <span className="rounded border border-slate-700 px-2 py-[2px]">cpu</span>
           <span className="rounded border border-slate-700 px-2 py-[2px]">menu</span>
         </div>
-        <p className="font-semibold text-blue-400">CPRG 306 BASHTOP</p>
+        <p className="font-semibold text-[#ff7b1c]">CPRG 306 BASHTOP</p>
         <p className="text-slate-300">08:44:31 PM</p>
       </section>
 
       <section className="rounded-md border border-slate-700 bg-slate-900 p-3">
         <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.16em]">
           <span className="text-slate-300">cpu / uptime 18:39</span>
-          <span className="text-blue-400">load avg: 0.91 0.82 0.69</span>
+          <span className="text-[#ff9a1f]">load avg: 0.91 0.82 0.69</span>
         </div>
         <div className="flex h-28 items-end gap-[2px] overflow-hidden rounded-sm border border-slate-700 bg-black/35 p-1">
           {cpuWave.map((height, index) => (
             <span
               key={`${height}-${index}`}
-              className="w-[6px] rounded-sm bg-emerald-400/90 shadow-[0_0_8px_rgba(74,222,128,0.6)]"
+              className={`w-[6px] rounded-sm shadow-[0_0_8px_rgba(255,58,47,0.6)] ${
+                index % 2 === 0 ? "bg-[#ff3a2f]" : "bg-[#ff8a1f]"
+              }`}
               style={{ height: `${height}%` }}
             />
           ))}
@@ -61,7 +63,7 @@ export default function Home() {
                   <span>5.75 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[38%] rounded-sm bg-emerald-400/80" />
+                  <div className="h-full w-[38%] rounded-sm bg-[#ff3a2f]" />
                 </div>
               </div>
               <div>
@@ -70,7 +72,7 @@ export default function Home() {
                   <span>9.76 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[63%] rounded-sm bg-cyan-300/80" />
+                  <div className="h-full w-[63%] rounded-sm bg-[#ff8a1f]" />
                 </div>
               </div>
               <div>
@@ -79,7 +81,7 @@ export default function Home() {
                   <span>2.61 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[22%] rounded-sm bg-fuchsia-300/80" />
+                  <div className="h-full w-[22%] rounded-sm bg-[#ffb347]" />
                 </div>
               </div>
             </div>
@@ -92,7 +94,7 @@ export default function Home() {
                 <span
                   key={`${height}-${index}`}
                   className={`w-[5px] rounded-sm ${
-                    index % 2 === 0 ? "bg-fuchsia-300/80" : "bg-cyan-300/80"
+                    index % 2 === 0 ? "bg-[#ff3a2f]" : "bg-[#ff8a1f]"
                   }`}
                   style={{ height: `${height}%` }}
                 />
@@ -110,7 +112,7 @@ export default function Home() {
             <span>processes</span>
             <span>cpu responsive</span>
           </div>
-          <div className="grid grid-cols-[2fr_1fr_1fr] gap-x-3 border-b border-slate-700 pb-2 text-[11px] uppercase tracking-[0.14em] text-blue-400">
+          <div className="grid grid-cols-[2fr_1fr_1fr] gap-x-3 border-b border-slate-700 pb-2 text-[11px] uppercase tracking-[0.14em] text-[#ff9a1f]">
             <span>Program</span>
             <span>Threads</span>
             <span>CPU</span>
@@ -148,7 +150,7 @@ export default function Home() {
                 className="flex items-center justify-between rounded border border-slate-700 bg-black/25 px-2 py-2"
               >
                 <span>{week.label}</span>
-                <span className={`text-xs ${index % 2 === 0 ? "text-blue-400" : "text-amber-300"}`}>
+                <span className={`text-xs ${index % 2 === 0 ? "text-[#ff3a2f]" : "text-[#ff9a1f]"}`}>
                   READY
                 </span>
               </Link>
