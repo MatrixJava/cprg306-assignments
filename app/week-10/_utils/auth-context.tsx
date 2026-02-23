@@ -4,6 +4,7 @@ import {
   GithubAuthProvider,
   User,
   onAuthStateChanged,
+  signInWithRedirect,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
@@ -19,6 +20,17 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
+function getFirebaseErrorCode(error: unknown) {
+  if (typeof error === "object" && error !== null && "code" in error) {
+    const possibleCode = (error as { code?: unknown }).code;
+    if (typeof possibleCode === "string") {
+      return possibleCode;
+    }
+  }
+
+  return null;
+}
+
 export function AuthContextProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
@@ -27,7 +39,15 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
       throw new Error("Firebase is not configured.");
     }
     const provider = new GithubAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      if (getFirebaseErrorCode(error) === "auth/popup-blocked") {
+        await signInWithRedirect(auth, provider);
+        return;
+      }
+      throw error;
+    }
   };
 
   const firebaseSignOut = async () => {

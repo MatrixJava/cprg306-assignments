@@ -8,6 +8,7 @@ const weeks = [
   { href: "/week-6", label: "Week 6", cpu: "1.8%" },
   { href: "/week-7", label: "Week 7", cpu: "2.1%" },
   { href: "/week-8", label: "Week 8", cpu: "1.5%" },
+  { href: "/week-9", label: "Week 9", cpu: "2.0%" },
   { href: "/week-10", label: "Week 10", cpu: "2.4%" },
 ];
 
@@ -30,21 +31,21 @@ export default function Home() {
           <span className="rounded border border-slate-700 px-2 py-[2px]">cpu</span>
           <span className="rounded border border-slate-700 px-2 py-[2px]">menu</span>
         </div>
-        <p className="font-semibold text-[#ff7b1c]">CPRG 306 BASHTOP</p>
+        <p className="font-semibold text-[#f8faff]">CPRG 306 BASHTOP</p>
         <p className="text-slate-300">08:44:31 PM</p>
       </section>
 
       <section className="rounded-md border border-slate-700 bg-slate-900 p-3">
         <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.16em]">
           <span className="text-slate-300">cpu / uptime 18:39</span>
-          <span className="text-[#ff9a1f]">load avg: 0.91 0.82 0.69</span>
+          <span className="text-[#cfb0ff]">load avg: 0.91 0.82 0.69</span>
         </div>
         <div className="flex h-28 items-end gap-[2px] overflow-hidden rounded-sm border border-slate-700 bg-black/35 p-1">
           {cpuWave.map((height, index) => (
             <span
               key={`${height}-${index}`}
-              className={`w-[6px] rounded-sm shadow-[0_0_8px_rgba(255,58,47,0.6)] ${
-                index % 2 === 0 ? "bg-[#ff3a2f]" : "bg-[#ff8a1f]"
+              className={`w-[6px] rounded-sm shadow-[0_0_9px_rgba(201,131,255,0.7)] ${
+                index % 2 === 0 ? "bg-[#f8faff]" : "bg-[#8f5cff]"
               }`}
               style={{ height: `${height}%` }}
             />
@@ -63,7 +64,7 @@ export default function Home() {
                   <span>5.75 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[38%] rounded-sm bg-[#ff3a2f]" />
+                  <div className="h-full w-[38%] rounded-sm bg-[#f8faff]" />
                 </div>
               </div>
               <div>
@@ -72,7 +73,7 @@ export default function Home() {
                   <span>9.76 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[63%] rounded-sm bg-[#ff8a1f]" />
+                  <div className="h-full w-[63%] rounded-sm bg-[#8f5cff]" />
                 </div>
               </div>
               <div>
@@ -81,7 +82,7 @@ export default function Home() {
                   <span>2.61 GiB</span>
                 </div>
                 <div className="h-2 rounded-sm border border-slate-700 bg-black/35">
-                  <div className="h-full w-[22%] rounded-sm bg-[#ffb347]" />
+                  <div className="h-full w-[22%] rounded-sm bg-[#c983ff]" />
                 </div>
               </div>
             </div>
@@ -94,7 +95,7 @@ export default function Home() {
                 <span
                   key={`${height}-${index}`}
                   className={`w-[5px] rounded-sm ${
-                    index % 2 === 0 ? "bg-[#ff3a2f]" : "bg-[#ff8a1f]"
+                    index % 2 === 0 ? "bg-[#f8faff]" : "bg-[#8f5cff]"
                   }`}
                   style={{ height: `${height}%` }}
                 />
@@ -112,7 +113,7 @@ export default function Home() {
             <span>processes</span>
             <span>cpu responsive</span>
           </div>
-          <div className="grid grid-cols-[2fr_1fr_1fr] gap-x-3 border-b border-slate-700 pb-2 text-[11px] uppercase tracking-[0.14em] text-[#ff9a1f]">
+          <div className="grid grid-cols-[2fr_1fr_1fr] gap-x-3 border-b border-slate-700 pb-2 text-[11px] uppercase tracking-[0.14em] text-[#cfb0ff]">
             <span>Program</span>
             <span>Threads</span>
             <span>CPU</span>
@@ -150,7 +151,7 @@ export default function Home() {
                 className="flex items-center justify-between rounded border border-slate-700 bg-black/25 px-2 py-2"
               >
                 <span>{week.label}</span>
-                <span className={`text-xs ${index % 2 === 0 ? "text-[#ff3a2f]" : "text-[#ff9a1f]"}`}>
+                <span className={`text-xs ${index % 2 === 0 ? "text-[#f8faff]" : "text-[#c983ff]"}`}>
                   READY
                 </span>
               </Link>
