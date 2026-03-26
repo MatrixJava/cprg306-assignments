@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #040308;
+  --foreground: #f4f7ff;
+  --panel: #0c0914;
+  --panel-soft: #171126;
+  --border: #3d2b60;
+  --accent: #c983ff;
+  --accent-soft: #8f5cff;
+  --info: #f8faff;
+  --warning: #cfb0ff;
+  --danger: #ff8ae0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-orbitron);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-plex-mono), monospace;
+  letter-spacing: 0.015em;
+  text-shadow: 0 0 10px rgba(200, 170, 255, 0.24);
+  background-image:
+    radial-gradient(circle at 12% 10%, rgba(143, 92, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 82% 88%, rgba(95, 63, 170, 0.2), transparent 38%),
+    linear-gradient(180deg, #0c0914 0%, #040308 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  width: min(1320px, calc(100% - 1.2rem));
+  margin: 0.6rem auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 90%),
+    var(--panel);
+  box-shadow:
+    0 0 0 1px rgba(201, 131, 255, 0.18),
+    0 14px 42px rgba(4, 3, 8, 0.72);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-orbitron), sans-serif;
+  letter-spacing: 0.08em;
+  color: var(--info);
+}
+
+a {
+  color: var(--info) !important;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(244, 247, 255, 0.45);
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+a:hover {
+  color: var(--accent) !important;
+  border-color: rgba(201, 131, 255, 0.8);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-plex-mono), monospace;
+}
+
+button {
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  background: linear-gradient(135deg, rgba(201, 131, 255, 0.2), rgba(143, 92, 255, 0.18)) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+button:hover {
+  border-color: var(--info) !important;
+  color: var(--info) !important;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input,
+select,
+textarea {
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+  background: var(--panel-soft) !important;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid var(--info);
+  outline-offset: 1px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bg-slate-950,
+.bg-slate-900 {
+  background: var(--panel) !important;
+}
+
+.bg-slate-700 {
+  background: var(--panel-soft) !important;
+}
+
+.bg-blue-600,
+.bg-blue-500,
+.bg-emerald-600,
+.bg-emerald-500,
+.bg-orange-600 {
+  background:
+    linear-gradient(135deg, rgba(201, 131, 255, 0.26), rgba(143, 92, 255, 0.24)) !important;
+  border: 1px solid rgba(175, 130, 255, 0.85) !important;
+}
+
+.text-slate-100,
+.text-slate-300,
+.text-white {
+  color: var(--foreground) !important;
+}
+
+.text-blue-400,
+.text-blue-500 {
+  color: var(--info) !important;
+}
+
+.text-amber-300 {
+  color: var(--warning) !important;
+}
+
+.text-red-400,
+.text-red-500 {
+  color: var(--danger) !important;
+}
+
+.border-slate-700 {
+  border-color: var(--border) !important;
+}
+
+::selection {
+  background: rgba(201, 131, 255, 0.35);
+  color: #fff;
 }

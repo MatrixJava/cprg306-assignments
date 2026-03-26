@@ -8,10 +8,9 @@ type SortBy = "name" | "category" | "grouped";
 
 interface ItemListProps {
   items: ShoppingItem[];
-  onItemSelect: (item: ShoppingItem) => void;
 }
 
-export default function ItemList({ items, onItemSelect }: ItemListProps) {
+export default function ItemList({ items }: ItemListProps) {
   const [sortBy, setSortBy] = useState<SortBy>("name");
 
   const sortedItems = useMemo(() => {
@@ -71,7 +70,7 @@ export default function ItemList({ items, onItemSelect }: ItemListProps) {
       {sortBy !== "grouped" ? (
         <ul>
           {sortedItems.map((item) => (
-            <Item key={item.id} item={item} onSelect={onItemSelect} />
+            <Item key={item.id} item={item} />
           ))}
         </ul>
       ) : (
@@ -81,7 +80,7 @@ export default function ItemList({ items, onItemSelect }: ItemListProps) {
               <h2 className="mx-2 mt-5 text-lg font-bold capitalize">{category}</h2>
               <ul>
                 {categoryItems.map((item) => (
-                  <Item key={item.id} item={item} onSelect={onItemSelect} />
+                  <Item key={item.id} item={item} />
                 ))}
               </ul>
             </section>

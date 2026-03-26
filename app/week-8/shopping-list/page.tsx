@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useUserAuth } from "../_utils/auth-context";
 import ItemList from "./item-list";
 import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
@@ -16,9 +17,22 @@ function cleanItemName(name: string) {
     .trim();
 }
 
-export default function Week7Page() {
+export default function Week8ShoppingListPage() {
+  const { user } = useUserAuth();
   const [items, setItems] = useState<ShoppingItem[]>(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
+
+  if (!user) {
+    return (
+      <main className="min-h-screen bg-slate-950 p-8 text-slate-100">
+        <h1 className="mb-4 text-3xl font-bold">Access Restricted</h1>
+        <p className="mb-4">You must be logged in to view this page.</p>
+        <Link href="/week-8" className="text-blue-400 hover:underline">
+          Return to Week 8 Login
+        </Link>
+      </main>
+    );
+  }
 
   const handleAddItem = (item: Omit<ShoppingItem, "id">) => {
     const newItem: ShoppingItem = {
@@ -35,10 +49,13 @@ export default function Week7Page() {
 
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-slate-100">
-      <Link href="/" className="mb-4 inline-block text-blue-400 hover:underline">
-        ← Home
-      </Link>
-      <h1 className="mb-6 text-3xl font-bold">Shopping List (Week 7)</h1>
+      <div className="mb-4 flex items-center justify-between">
+        <Link href="/week-8" className="inline-block text-blue-400 hover:underline">
+          ← Week 8 Auth
+        </Link>
+        <p className="text-sm text-slate-300">Signed in as {user.email}</p>
+      </div>
+      <h1 className="mb-6 text-3xl font-bold">Shopping List (Week 8)</h1>
       <div className="grid gap-8 lg:grid-cols-[340px_1fr_420px]">
         <NewItem onAddItem={handleAddItem} />
         <ItemList items={items} onItemSelect={handleItemSelect} />
